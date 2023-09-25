@@ -8,4 +8,4 @@ services:
         context: .
       volumes:
         - ./output:/app/output
-        - ./tasks:/app/tasks
+        #- ./tasks:/app/tasks
