@@ -2,7 +2,7 @@ import os
 import pandas as pd
 
 # Folder containing the CSV files
-folder_path = "/Users/sivasai/Projects/Work/Uncode/Python/google-maps-scrapper/Merge CSV/merge"
+folder_path = "/Users/sivasai/Projects/Work/Uncode/Python/google-maps-scrapper/output"
 
 # Create an empty DataFrame to store the merged data
 merged_data = pd.DataFrame()

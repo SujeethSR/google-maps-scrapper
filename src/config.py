@@ -1,95 +1,21 @@
-queries = [
-    {"keyword": "Vape stores in 75039"},
-    {"keyword": "Vape stores in 75166"},
-    {"keyword": "Vape stores in 75182"},
-    {"keyword": "Vape stores in 75207"},
-    {"keyword": "Vape stores in 75214"},
-    {"keyword": "Vape stores in 65221"},
-    {"keyword": "Vape stores in 75222"},
-    {"keyword": "Vape stores in 75233"},
-    {"keyword": "Vape stores in 75236"},
-    {"keyword": "Vape stores in 75242"},
-    {"keyword": "Vape stores in 75247"},
-    {"keyword": "Vape stores in 75250"},
-    {"keyword": "Vape stores in 75260"},
-    {"keyword": "Vape stores in 75261"},
-    {"keyword": "Vape stores in 75262"},
-    {"keyword": "Vape stores in 75263"},
-    {"keyword": "Vape stores in 75264"},
-    {"keyword": "Vape stores in 75265"},
-    {"keyword": "Vape stores in 75266"},
-    {"keyword": "Vape stores in 75267"},
-    {"keyword": "Vape stores in 75270"},
-    {"keyword": "Vape stores in 75275"},
-    {"keyword": "Vape stores in 75277"},
-    {"keyword": "Vape stores in 75283"},
-    {"keyword": "Vape stores in 75284"},
-    {"keyword": "Vape stores in 75285"},
-    {"keyword": "Vape stores in 76101"},
-    {"keyword": "Vape stores in 76102"},
-    {"keyword": "Vape stores in 76121"},
-    {"keyword": "Vape stores in 76122"},
-    {"keyword": "Vape stores in 76124"},
-    {"keyword": "Vape stores in 76127"},
-    {"keyword": "Vape stores in 76129"},
-    {"keyword": "Vape stores in 76130"},
-    {"keyword": "Vape stores in 76136"},
-    {"keyword": "Vape stores in 76147"},
-    {"keyword": "Vape stores in 76150"},
-    {"keyword": "Vape stores in 76161"},
-    {"keyword": "Vape stores in 76162"},
-    {"keyword": "Vape stores in 76163"},
-    {"keyword": "Vape stores in 76166"},
-    {"keyword": "Vape stores in 76181"},
-    {"keyword": "Vape stores in 76190"},
-    {"keyword": "Vape stores in 76191"},
-    {"keyword": "Vape stores in 76192"},
-    {"keyword": "Vape stores in 76193"},
-    {"keyword": "Vape stores in 76195"},
-    {"keyword": "Vape stores in 76196"},
-    {"keyword": "Vape stores in 76197"},
-    {"keyword": "Vape stores in 76198"},
-    {"keyword": "Vape stores in 76199"},
-    {"keyword": "Vape stores in 75301"},
-    {"keyword": "Vape stores in 75303"},
-    {"keyword": "Vape stores in 75312"},
-    {"keyword": "Vape stores in 75313"},
-    {"keyword": "Vape stores in 75315"},
-    {"keyword": "Vape stores in 75320"},
-    {"keyword": "Vape stores in 75326"},
-    {"keyword": "Vape stores in 75336"},
-    {"keyword": "Vape stores in 75339"},
-    {"keyword": "Vape stores in 75342"},
-    {"keyword": "Vape stores in 75354"},
-    {"keyword": "Vape stores in 75355"},
-    {"keyword": "Vape stores in 75356"},
-    {"keyword": "Vape stores in 75357"},
-    {"keyword": "Vape stores in 75358"},
-    {"keyword": "Vape stores in 75359"},
-    {"keyword": "Vape stores in 75360"},
-    {"keyword": "Vape stores in 75367"},
-    {"keyword": "Vape stores in 75368"},
-    {"keyword": "Vape stores in 75370"},
-    {"keyword": "Vape stores in 75371"},
-    {"keyword": "Vape stores in 75372"},
-    {"keyword": "Vape stores in 75373"},
-    {"keyword": "Vape stores in 75374"},
-    {"keyword": "Vape stores in 75376"},
-    {"keyword": "Vape stores in 75378"},
-    {"keyword": "Vape stores in 75379"},
-    {"keyword": "Vape stores in 75380"},
-    {"keyword": "Vape stores in 75381"},
-    {"keyword": "Vape stores in 75382"},
-    {"keyword": "Vape stores in 75389"},
-    {"keyword": "Vape stores in 75390"},
-    {"keyword": "Vape stores in 75391"},
-    {"keyword": "Vape stores in 75392"},
-    {"keyword": "Vape stores in 75393"},
-    {"keyword": "Vape stores in 75394"},
-    {"keyword": "Vape stores in 75395"},
-    {"keyword": "Vape stores in 75397"},
-    {"keyword": "Vape stores in 75398"}
-]
+import csv
+import os
+
+# Determine the directory where this config.py file is located
+dir_path = os.path.dirname(os.path.realpath(__file__))
+csv_file_path = os.path.join(dir_path, 'pincodes.csv')
+
+# Read the ZIP codes from the CSV file
+with open(csv_file_path, 'r') as file:
+    csv_reader = csv.reader(file)
+    next(csv_reader)  # Skip the header
+    zip_codes = [row[0] for row in csv_reader]
+
+# Construct the queries list using a list comprehension
+queries = [{
+    "keyword": f"vape stores in {zip_code}",
+    "select": ["place_id","title", "link", "main_category", "rating", "reviews", "website", "phone", "address"]
+} for zip_code in zip_codes]
 
 
 number_of_scrapers = 10
