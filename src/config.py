@@ -13,8 +13,8 @@ with open(csv_file_path, 'r') as file:
 
 # Construct the queries list using a list comprehension
 queries = [{
-    "keyword": f"vape stores in {zip_code}",
-    "select": ["place_id","title", "link", "main_category", "rating", "reviews", "website", "phone", "address"]
+    "keyword": f"Liquor stores in {zip_code}",
+    "select": ["place_id","title", "link", "main_category", "rating", "reviews", "website", "phone", "address","coordinates"]
 } for zip_code in zip_codes]
 
 
